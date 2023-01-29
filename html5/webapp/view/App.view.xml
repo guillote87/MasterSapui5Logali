@@ -8,6 +8,7 @@
                 </headerContent>
                     <content>
                         <mvc:XMLView viewName="gq4dev.html5.view.HelloPanel" />
+                        <mvc:XMLView viewName="gq4dev.html5.view.InvoicesList" />
                     </content>
                 </Page>
             </pages>
