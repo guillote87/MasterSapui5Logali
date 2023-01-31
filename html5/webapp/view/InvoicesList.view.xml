@@ -1,6 +1,6 @@
 <mvc:View controllerName="gq4dev.html5.controller.InvoicesList" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
     <List id="InvoicesList" 
-          items="{ path:'invoices>/Invoices',
+          items="{ path:'northwind>/Invoices',
                    sorter:{ path:'ShipperName',
                             group: true
                             }
@@ -15,9 +15,9 @@
         </headerToolbar>
         <items>
             <ObjectListItem
-                title="{invoices>Quantity} x {invoices>ProductName}"
+                title="{northwind>Quantity} x {northwind>ProductName}"
                 number="{
-				parts:[{path:'invoices>ExtendedPrice'},{path:'currency>/usd'}],
+				parts:[{path:'northwind>ExtendedPrice'},{path:'currency>/usd'}],
 				type: 'sap.ui.model.type.Currency',
 				formatOptions: {
                     showMeasure: false,
@@ -27,10 +27,10 @@
                     }
 			}"
                 numberUnit="{currency>/usd}"
-                numberState="{= ${invoices>ExtendedPrice} > 50 ? 'Success' : 'Error'}"
+                numberState="{= ${northwind>ExtendedPrice} > 50 ? 'Success' : 'Error'}"
             >
                 <firstStatus>
-                    <ObjectStatus text="{path:'invoices>Status',
+                    <ObjectStatus text="{path:'northwind>Status',
                                          formatter:'.formatter.invoiceStatus'
                                          }" />
                 </firstStatus>
