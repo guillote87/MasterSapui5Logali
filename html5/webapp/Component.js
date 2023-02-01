@@ -30,7 +30,10 @@ sap.ui.define([
                 this.setModel(i18nModel, "i18n")
                 // Crea una instancia del objeto manejado helloDialog
                 this._helloDialog = new HelloDialog(this.getRootControl())
-            },
+                
+                this.getRouter().initialize()
+            },     
+            
             exit: function () {
                 this._helloDialog.destroy()
                 delete this._helloDialog

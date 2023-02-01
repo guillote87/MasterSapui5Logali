@@ -36,6 +36,19 @@ sap.ui.define([
             const oBinding = oList.getBinding("items")
             //A los items que tengo en la lista le aplico el filtro
             oBinding.filter(aFilter)
+        },
+        navigateToDetails: function (oEvent) {
+            const oItem = oEvent.getSource()
+
+            const oRouter = sap.ui.core.UIComponent.getRouterFor(this)
+            
+            oRouter.navTo("Details",{
+                // Esto me devuelve la ruta que esta en el navegador
+                invoicePath: window.encodeURIComponent(oItem.getBindingContext("northwind").getPath().substr(1))
+
+            })
         }
     })
+
+
 });

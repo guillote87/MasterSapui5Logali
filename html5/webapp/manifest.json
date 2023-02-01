@@ -80,15 +80,6 @@
       "invoices": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "Invoices.json"
-      },
-      "": {
-        "dataSource": "northwind.svc",
-        "preload": true,
-        "settings": {
-          "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Inline",
-          "refreshAfterChange": false
-        }
       }
     },
     "resources": {
@@ -105,33 +96,47 @@
         "async": true,
         "viewPath": "gq4dev.html5.view",
         "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false
+        "controlId": "app"
+       
       },
       "routes": [
         {
-          "name": "RouteMain",
-          "pattern": ":?query:",
+          "name": "TargetOverview",
+          "pattern": "",
           "target": [
-            "TargetMain"
+            "TargetOverview"
+          ]
+        },
+        {
+          "name": "Details",
+          "pattern": "details/{invoicePath}",
+          "target": [
+            "TargetDetails"
           ]
         }
       ],
       "targets": {
-        "TargetMain": {
+        "TargetOverview": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "Main",
-          "viewName": "Main"
+          "viewId": "Overview",
+          "viewName": "Overview"
+        },
+        "TargetDetails": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Details",
+          "viewName": "Details"
         }
       }
     },
-    "rootView": {
-      "viewName": "gq4dev.html5.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "App"
+      "rootView": {
+        "viewName": "gq4dev.html5.view.App",
+        "type": "XML",
+        "async": true,
+        "id": "app"
     }
   }
 }
