@@ -1,42 +1,59 @@
-<mvc:View controllerName="gq4dev.html5.controller.InvoicesList" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
-    <List id="InvoicesList" 
-          items="{ path:'northwind>/Invoices',
-                   sorter:{ path:'ShipperName',
-                            group: true
-                            }
-                   }" 
-            class="sapUiResponsiveMargin" width="auto">
+<mvc:View controllerName="gq4dev.html5.controller.InvoicesList"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+    <Panel accessibleRole="Region">
+
         <headerToolbar>
             <Toolbar>
                 <Title text="{i18n>invoicesListTitle}" />
                 <ToolbarSpacer />
-                <SearchField width="50%" search="onFilterInvoices" />
+                <SearchField width="50%" search="onFilterInvoices" placeholder="{i18n>searchFieldPlaceHolder}" />
             </Toolbar>
         </headerToolbar>
-        <items>
-            <ObjectListItem
-                title="{northwind>Quantity} x {northwind>ProductName}"
-                type="Navigation"
-                press="navigateToDetails"
-                number="{
-				parts:[{path:'northwind>ExtendedPrice'},{path:'currency>/usd'}],
-				type: 'sap.ui.model.type.Currency',
-				formatOptions: {
-                    showMeasure: false,
-                    decimals:2,
-                    style:'short',
-                    roundingMode:'TOWARDS_ZERO'
-                    }
-			}"
-                numberUnit="{currency>/usd}"
-                numberState="{= ${northwind>ExtendedPrice} > 50 ? 'Success' : 'Error'}"
-            >
-                <firstStatus>
-                    <ObjectStatus text="{path:'northwind>Status',
-                                         formatter:'.formatter.invoiceStatus'
-                                         }" />
-                </firstStatus>
-            </ObjectListItem>
-        </items>
-    </List>
+
+        <Table id="InvoicesTable" items="{ path:'northwind>/Invoices',
+                   sorter:{ path:'ShipperName',
+                            group: true
+                            }
+                   }" class="sapUiResponsiveMargin" width="auto">
+
+            <columns>
+                <Column hAlign="End" minScreenWidth="Small" demandPopin="true" width="5em">
+                    <Text text="{i18n>columnQuantity}" />
+                </Column>
+                <Column >
+                    <Text text="{i18n>columnName}" />
+                </Column>
+                <Column minScreenWidth="Small" demandPopin="true">
+                    <Text text="{i18n>columnStatus}" />
+                </Column>
+                <Column minScreenWidth="Tablet">
+                    <Text text="{i18n>columnShipper}" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text="{i18n>columnPrice}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Navigation" press="navigateToDetails">
+
+                    <cells>
+                        <ObjectNumber number="{northwind>Quantity}"/>
+                        <ObjectIdentifier text="{northwind>ProductName}"/>
+                        <Text text="{
+                            path: 'northwind>Status',
+                            formatter: '.formatter.invoiceStatus' 
+                            }"/>
+                        <Text text="{northwind>ShipperName}"/>
+                        <ObjectNumber number="{ parts : [ {path : 'northwind>ExtendedPrice'},
+                                                    {path : 'currency>/usd'}],
+                                                type: 'sap.ui.model.type.Currency',
+                                                formatOptions: {
+                                                    showMeasure : false
+                                                }}" unit="{currency>/usd}" state="{= ${northwind>ExtendedPrice} > 50 ? 'Success' : 'Error'}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Panel>
 </mvc:View>

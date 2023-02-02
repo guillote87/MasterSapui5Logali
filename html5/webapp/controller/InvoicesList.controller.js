@@ -31,9 +31,9 @@ sap.ui.define([
                 aFilter.push(new Filter('ProductName', FilterOperator.Contains, sQuery))
             }
 
-            const oList = this.byId("InvoicesList")
-            //Traigo el binding a los items de la lista
-            const oBinding = oList.getBinding("items")
+            const oTable = this.byId("InvoicesTable")
+            //Traigo el binding a los items de la tabla
+            const oBinding = oTable.getBinding("items")
             //A los items que tengo en la lista le aplico el filtro
             oBinding.filter(aFilter)
         },

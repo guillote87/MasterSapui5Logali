@@ -9,7 +9,7 @@ sap.ui.define([
     'use strict';
     return Controller.extend("gq4dev.html5.controller.App", {
         onInit: function () {
-            
+            this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass())
         },
         onOpenDialogHeader:function(){
             this.getOwnerComponent().openHelloDialog()

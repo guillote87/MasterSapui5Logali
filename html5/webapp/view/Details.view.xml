@@ -2,7 +2,7 @@
             xmlns:mvc="sap.ui.core.mvc" 
 xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:gq4dev="gq4dev.html5.control" displayBlock="true">
     <Page title="{i18n>DetailsPageTitle}" showNavButton="true" navButtonPress="onNavBack">
-        <ObjectHeader title="{northwind>Quantity} x {northwind>ProductName}">
+        <ObjectHeader title="{northwind>Quantity} x {northwind>ProductName}" responsive="true" fullScreenOptimized="true">
             <attributes />
             <ObjectAttribute text="{northwind>ShipName}" />
             <ObjectAttribute text="{northwind>ShipAddress}" />
@@ -14,6 +14,5 @@ xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:gq4dev="gq4dev.html5.control" displ
             <ObjectAttribute text="{northwind>CustomerName}" />
         </ObjectHeader>
         <gq4dev:ProductRating  id="rating" class="sapUiSmallMarginBeginEnd" change="onRatingChange" />
-    
     </Page>
 </mvc:View>

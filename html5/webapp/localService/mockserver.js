@@ -61,7 +61,7 @@ sap.ui.define([
 
                         //simulate all requests using mock data
                         oMockServer.simulate(sMetadataUrl, {
-                            sMocodataBaseUrk : sJsonFilesUrl,
+                            sMocKdataBaseUrl : sJsonFilesUrl,
                             bGenerateMissingMockData : true
                         });
 
